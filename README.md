@@ -18,20 +18,6 @@ kubectl get pods -o wide
 ```bash
 kubectl describe pod pod1   
 ```
-```bash
-Name:         pod1
-Namespace:    default
-Priority:     0
-Node:         minikube/192.168.59.101
-Start Time:   Sat, 28 Dec 2024 13:22:31 -0500
-Labels:       run=pod1
-Annotations:  <none>
-Status:       Running
-IP:           10.244.0.21
-IPs:
-  IP:  10.244.0.21
-[...]
-```
 ## Obtener logs de un POD
 ```bash
 kubectl logs pod1
