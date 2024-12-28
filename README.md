@@ -9,6 +9,7 @@
   - [Port-forwarding](#Port-forwarding)
   - [Crear POD con manifiest](#Crear-POD-con-manifiest)
   - [Exportar configuración de un POD](#Exportar-configuración-de-un-POD)
+  - [Eliminar PODS](#Eliminar-PODS)
  
 ### POD
 
@@ -104,3 +105,14 @@ kubectl get pod/apache -o yaml > apache.yaml
 ```bash
 kubectl get pod/apache -o json > apache.json
 ```bash
+
+### Eliminar PODS
+```bash
+kubectl delete pod <Nombre-POD>
+kubectl delete pod <Nombre-POD> --now
+kubectl delete pod <Nombre-POD> --grace-period=5
+kubectl delete pods --all
+
+# No recomendable
+kubectl delete all --all
+```
