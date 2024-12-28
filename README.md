@@ -217,3 +217,15 @@ spec:
 Si el contenedor ejecuta el comando echo "*Hello, World!*" y termina con un código de salida 0 (sin errores), el contenedor no se reiniciará. El pod terminará y se considerará completado.
 ### Organización y selección de recursos
 ### Labels
+```bash
+kubectl get pod httpd --show-labels
+kubectl get pod httpd -L key1,key2,key3,...
+```
+Adicionar etiqueta
+```bash
+kubectl label pod <POD> Llave=Valor
+```
+Sobreescribir una etiqueta
+```bash
+kubectl label --overwrite pod/httpd version=2.0
+```
