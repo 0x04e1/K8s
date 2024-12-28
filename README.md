@@ -22,3 +22,9 @@ kubectl describe pod pod1
 ```bash
 kubectl logs pod1
 ```
+### Obtener detalles de un POD
+```bash
+kubectl describe pod pod1
+```
+
+
