@@ -7,7 +7,7 @@
   - [Ejecutar comandos en un POD](#Ejecutar-comandos-en-un-POD)
   - [Logs de un POD](#Logs-de-un-POD)
   - [Port-forwarding](#Port-forwarding)
-  - [Crear-POD-con-manifiest](#Crear POD con *manifiest*)
+  - [Crear POD con manifiest](#Crear-POD-con-manifiest)
  
 ### POD
 
