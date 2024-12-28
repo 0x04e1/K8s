@@ -8,6 +8,7 @@
   - [Logs de un POD](#Logs-de-un-POD)
   - [Port-forwarding](#Port-forwarding)
   - [Crear POD con manifiest](#Crear-POD-con-manifiest)
+  - [Exportar configuración de un POD](#Exportar-configuración-de-un-POD)
  
 ### POD
 
@@ -96,3 +97,10 @@ kubectl create -f httpd.yaml
 # Si el recurso ya existe, se actualizará.
 kubectl apply -f httpd.yaml
 ```
+### Exportar configuración de un POD
+```bash
+kubectl get pod/apache -o yaml > apache.yaml
+```
+```bash
+kubectl get pod/apache -o json > apache.json
+```bash
