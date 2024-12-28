@@ -50,11 +50,11 @@ kubectl get pods
 kubectl get pods -o wide
 ```
 ```bash
-kubectl describe pod pod1   
+kubectl describe pod <POD>   
 ```
 ### Obtener detalles de un POD
 ```bash
-kubectl describe pod pod1
+kubectl describe pod <POD>
 ```
 ### Ejecutar comandos en un POD
 ```bash
