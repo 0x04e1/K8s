@@ -165,7 +165,7 @@ spec:
 ```
 Si el proceso de Apache termina, Kubernetes iniciará el contenedor nuevamente debido a la política *Always*. El flujo sería el siguiente:
 
-1- Se detiene el servicio httpd. */apachectl  stop*
+1- Se detiene el servicio httpd. ```/apachectl  stop```
 
 2- El contenedor deja de ejecutarse ya que no hay proceso principal activo (o el proceso principal termina).
 
