@@ -104,8 +104,7 @@ kubectl get pod/apache -o yaml > apache.yaml
 ```
 ```bash
 kubectl get pod/apache -o json > apache.json
-```bash
-
+```
 ### Eliminar PODS
 ```bash
 kubectl delete pod <Nombre-POD>
