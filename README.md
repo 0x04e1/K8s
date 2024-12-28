@@ -115,3 +115,33 @@ kubectl delete pods --all
 # No recomendable
 kubectl delete all --all
 ```
+### Multicontenedores
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multipod
+spec:
+  containers:
+  - name: web
+    image: nginx
+    ports:
+    - containerPort: 80  
+  - name: monitor
+    image: alpine
+    command: ["watch", "-n5", "ping", "localhost"]
+```
+```bash
+kubectl apply -f multiple-containers.yaml
+```
+Para ver los logs:
+```bash
+kubectl logs multipod -c monitor
+kubectl logs multipod -c web
+```
+Para ejecutar comandos en los PODS:
+```bash
+kubectl exec -it multipod -c monitor -- /bin/sh
+kubectl exec -it multipod -c web -- /bin/sh
+```
+
