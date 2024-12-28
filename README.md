@@ -7,6 +7,7 @@
   - [Ejecutar comandos en un POD](#Ejecutar-comandos-en-un-POD)
   - [Logs de un POD](#Logs-de-un-POD)
   - [Port-forwarding](#Port-forwarding)
+  - [Crear-POD-con-*manifiest*](#Crear POD con *manifiest*)
  
 ### POD
 
@@ -73,7 +74,7 @@ curl -s 192.168.59.101:32635
 ```bash
 kubectl port-forward apache 8080:80
 ```
-### Crear POD con manifiest
+### Crear POD con *manifiest*
 ```yml
 apiVersion: v1
 kind: Pod
