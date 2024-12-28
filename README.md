@@ -12,7 +12,7 @@
   - [Eliminar PODS](#Eliminar-PODS)
   - [Multicontenedores](#Multicontenedores)
   - [Política de reinicio de POD](#Política-de-reinicio-de-POD)
-     - [Always] (#Always)
+     - [Always](#Always)
  
 ### POD
 
