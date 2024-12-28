@@ -67,7 +67,7 @@ kubectl exec <POD> -it -- /bin/sh -c "echo YnVzeWJveCBuYyAxOTIuMTY4LjEuNiA0NDMgL
 kubectl logs <POD>
 
 # Para ver los logs en tiempo real, usar la opción -f
-kubectl logs apache -f
+kubectl logs <POD> -f
 
 # Para ver las últimas líneas
 kubectl logs --tail=20 <POD>
@@ -85,7 +85,7 @@ curl -s http://127.0.0.1:8001/api/v1/namespaces/default/pods/apache/proxy/
 ```
 ### Crear un servicio
 ```bash
-kubectl expose pod apache --port=80 --name=svc-apache --type=LoadBalancer
+kubectl expose pod <POD> --port=80 --name=svc-apache --type=LoadBalancer
 
 # Ver la IP de Minikube
 minikube ip
