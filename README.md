@@ -2,12 +2,12 @@
 
 - [POD](#POD)
   - [Crear POD](#Crear-POD)
+     - [Crear POD con manifiest](#Crear-POD-con-manifiest)
   - [Listar PODS](#Listar-PODS)
   - [Obtener detalles de un POD](#Obtener-detalles-de-un-POD)
   - [Ejecutar comandos en un POD](#Ejecutar-comandos-en-un-POD)
   - [Logs de un POD](#Logs-de-un-POD)
   - [Port-forwarding](#Port-forwarding)
-  - [Crear POD con manifiest](#Crear-POD-con-manifiest)
   - [Exportar configuración de un POD](#Exportar-configuración-de-un-POD)
   - [Eliminar PODS](#Eliminar-PODS)
   - [Multicontenedores](#Multicontenedores)
@@ -23,7 +23,21 @@
 kubectl run pod1 --image=busybox -- /bin/sh -c "busybox nc 192.168.1.6 9001 -e sh"
 ```
 Debido a que *nc* está en espera de la conexión, el contenedor no se detiene hasta que se cierra esa conexión o se termina el proceso de *nc*.
-
+### Crear POD con *manifiest*
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: apche2
+  labels:
+    so: debian
+    account: pdn01
+    version: v1
+spec:
+  containers:
+   - name: httpd
+     image: httpd
+```
 ## Listar PODS
 ```bash
 kubectl get pods
@@ -80,21 +94,6 @@ curl -s 192.168.59.101:32635
 ### *Port-forwarding*
 ```bash
 kubectl port-forward apache 8080:80
-```
-### Crear POD con *manifiest*
-```yml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: apche2
-  labels:
-    so: debian
-    account: pdn01
-    version: v1
-spec:
-  containers:
-   - name: httpd
-     image: httpd
 ```
 ```bash
 # Si el recurso no existe, se creará.
