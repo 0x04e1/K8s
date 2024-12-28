@@ -175,7 +175,7 @@ Si el proceso de Apache termina, Kubernetes iniciará el contenedor nuevamente d
 
 4- Kubernetes reinicia automáticamente el contenedor debido a la política *Always*, lanzando de nuevo Apache.
 
-### OnFailureure
+### OnFailure
 ```yaml
 apiVersion: v1
 kind: Pod
