@@ -67,3 +67,7 @@ kubectl get svc
 
 curl -s 192.168.59.101:32635
 ```
+### *Port-forwarding*
+```bash
+kubectl port-forward apache 8080:80
+```
