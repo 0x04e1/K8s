@@ -11,6 +11,8 @@
   - [Exportar configuración de un POD](#Exportar-configuración-de-un-POD)
   - [Eliminar PODS](#Eliminar-PODS)
   - [Multicontenedores](#Multicontenedores)
+  - [Política de reinicio de POD](#Política-de-reinicio-de-POD)
+     - [Always] (#Always)
  
 ### POD
 
@@ -145,4 +147,6 @@ Para ejecutar comandos en los PODS:
 kubectl exec -it multipod -c monitor -- /bin/sh
 kubectl exec -it multipod -c web -- /bin/sh
 ```
+### Política de reinicio de POD
 
+### Always
