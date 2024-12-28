@@ -47,3 +47,23 @@ kubectl logs --tail=20 apache
 # Para ver los logs de la última hora
 kubectl logs --since=1h apache
 ```
+### Acceso a través del Proxy
+```bash
+# Iniciarl el servicio de proxy
+kubectl proxy
+
+# Acceso a la API
+curl -s http://127.0.0.1:8001/api/v1/namespaces/default/pods/apache/proxy/
+```
+### Crear un servicio
+```bash
+kubectl expose pod apache --port=80 --name=svc-apache --type=LoadBalancer
+
+# Ver la IP de Minikube
+minikube ip
+
+# Ver el detalle del servicio creado
+kubectl get svc
+
+curl -s 192.168.59.101:32635
+```
