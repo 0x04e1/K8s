@@ -2,7 +2,7 @@
 
 - [POD](#POD)
   - [Crear POD](#Crear-POD)
-  - [Obtener los POD](#Obtener-los-POD)
+  - [Listar PODS](#Listar-PODS)
   - [Logs de un POD](#Logs-de-un-POD)
   - [Obtener detalles de un POD](#Obtener-detalles-de-un-POD)
   - [Ejecutar comandos en un POD](#Ejecutar-comandos-en-un-POD)
@@ -14,7 +14,7 @@ kubectl run pod1 --image=busybox -- /bin/sh -c "busybox nc 192.168.1.6 9001 -e s
 ```
 Debido a que *nc* está en espera de la conexión, el contenedor no se detiene hasta que se cierra esa conexión o se termina el proceso de *nc*.
 
-## Obtener los PODS
+## Listar PODS
 ```bash
 kubectl get pods
 ```
