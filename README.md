@@ -16,6 +16,10 @@
      - [OnFailure](#OnFailure)
      - [Never](#Never)
  - [Organización y selección de recursos](#Organización-y-selección-de-recursos)
+   - [Labels](#Labels)
+   - [Selectors](#Selectors)
+   - [Descriptors](#Descriptors)
+
 ### POD
 
 ## Crear POD
@@ -212,3 +216,4 @@ spec:
 ```
 Si el contenedor ejecuta el comando echo "*Hello, World!*" y termina con un código de salida 0 (sin errores), el contenedor no se reiniciará. El pod terminará y se considerará completado.
 ### Organización y selección de recursos
+### Labels
