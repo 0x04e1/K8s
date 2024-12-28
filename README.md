@@ -11,16 +11,9 @@ Debido a que *nc* está en espera de la conexión, el contenedor no se detiene h
 ## Obtener los PODS
 ```bash
 kubectl get pods
-
-NAME   READY   STATUS    RESTARTS   AGE
-pod1   1/1     Running   0          2m50s
 ```
 ```bash
 kubectl get pods -o wide
-```
-```bash
-NAME   READY   STATUS    RESTARTS   AGE     IP            NODE       NOMINATED NODE   READINESS GATES
-pod1   1/1     Running   0          9m58s   10.244.0.21   minikube   <none>           <none>
 ```
 ```bash
 kubectl describe pod pod1   
