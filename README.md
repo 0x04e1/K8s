@@ -24,7 +24,7 @@
 
 ## Crear POD
 ```bash
-kubectl run pod1 --image=busybox -- /bin/sh -c "busybox nc 192.168.1.6 9001 -e sh"
+kubectl run <POD> --image=busybox -- /bin/sh -c "busybox nc 192.168.1.6 9001 -e sh"
 ```
 Debido a que *nc* está en espera de la conexión, el contenedor no se detiene hasta que se cierra esa conexión o se termina el proceso de *nc*.
 ### Crear POD con *manifiest*
@@ -58,9 +58,9 @@ kubectl describe pod pod1
 ```
 ### Ejecutar comandos en un POD
 ```bash
-kubectl exec pod1 -it -- 'sh'
-kubectl exec pod1 -it -- 'id'
-kubectl exec pod1 -it -- /bin/sh -c "echo YnVzeWJveCBuYyAxOTIuMTY4LjEuNiA0NDMgLWUgc2gK | base64 -d | sh"
+kubectl exec <POD> -it -- 'sh'
+kubectl exec <POD> -it -- 'id'
+kubectl exec <POD> -it -- /bin/sh -c "echo YnVzeWJveCBuYyAxOTIuMTY4LjEuNiA0NDMgLWUgc2gK | base64 -d | sh"
 ```
 ### Logs de un POD
 ```bash
@@ -115,9 +115,9 @@ kubectl get pod/apache -o json > apache.json
 ```
 ### Eliminar PODS
 ```bash
-kubectl delete pod <Nombre-POD>
-kubectl delete pod <Nombre-POD> --now
-kubectl delete pod <Nombre-POD> --grace-period=5
+kubectl delete pod <POD>
+kubectl delete pod <POD> --now
+kubectl delete pod <POD> --grace-period=5
 kubectl delete pods --all
 
 # No recomendable
@@ -218,8 +218,8 @@ Si el contenedor ejecuta el comando echo "*Hello, World!*" y termina con un cód
 ### Organización y selección de recursos
 ### Labels
 ```bash
-kubectl get pod httpd --show-labels
-kubectl get pod httpd -L key1,key2,key3,...
+kubectl get pod <POD> --show-labels
+kubectl get pod <POD> -L key1,key2,key3,...
 ```
 Adicionar etiqueta
 ```bash
@@ -227,5 +227,5 @@ kubectl label pod <POD> Llave=Valor
 ```
 Sobreescribir una etiqueta
 ```bash
-kubectl label --overwrite pod/httpd version=2.0
+kubectl label --overwrite pod/<POD> version=2.0
 ```
