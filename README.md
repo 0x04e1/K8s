@@ -6,6 +6,8 @@
   - [Obtener detalles de un POD](#Obtener-detalles-de-un-POD)
   - [Ejecutar comandos en un POD](#Ejecutar-comandos-en-un-POD)
   - [Logs de un POD](#Logs-de-un-POD)
+  - [Port-forwarding](#Port-forwarding)
+ 
 ### POD
 
 ## Crear POD
