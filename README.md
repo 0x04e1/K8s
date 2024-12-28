@@ -73,3 +73,25 @@ curl -s 192.168.59.101:32635
 ```bash
 kubectl port-forward apache 8080:80
 ```
+### Crear POD con manifiest
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: apche2
+  labels:
+    so: debian
+    account: pdn01
+    version: v1
+spec:
+  containers:
+   - name: httpd
+     image: httpd
+```
+```bash
+# Si el recurso no existe, se creará.
+kubectl create -f httpd.yaml
+
+# Si el recurso ya existe, se actualizará.
+kubectl apply -f httpd.yaml
+```
