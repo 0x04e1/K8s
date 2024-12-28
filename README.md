@@ -3,9 +3,9 @@
 - [POD](#POD)
   - [Crear POD](#Crear-POD)
   - [Listar PODS](#Listar-PODS)
-  - [Logs de un POD](#Logs-de-un-POD)
   - [Obtener detalles de un POD](#Obtener-detalles-de-un-POD)
   - [Ejecutar comandos en un POD](#Ejecutar-comandos-en-un-POD)
+  - [Logs de un POD](#Logs-de-un-POD)
 ### POD
 
 ## Crear POD
@@ -23,10 +23,6 @@ kubectl get pods -o wide
 ```
 ```bash
 kubectl describe pod pod1   
-```
-## Logs de un POD
-```bash
-kubectl logs pod1
 ```
 ### Obtener detalles de un POD
 ```bash
