@@ -64,16 +64,16 @@ kubectl exec <POD> -it -- /bin/sh -c "echo YnVzeWJveCBuYyAxOTIuMTY4LjEuNiA0NDMgL
 ```
 ### Logs de un POD
 ```bash
-kubectl logs apache
+kubectl logs <POD>
 
 # Para ver los logs en tiempo real, usar la opción -f
 kubectl logs apache -f
 
 # Para ver las últimas líneas
-kubectl logs --tail=20 apache
+kubectl logs --tail=20 <POD>
 
 # Para ver los logs de la última hora
-kubectl logs --since=1h apache
+kubectl logs --since=1h <POD>
 ```
 ### Acceso a través del Proxy
 ```bash
@@ -97,7 +97,7 @@ curl -s 192.168.59.101:32635
 ```
 ### *Port-forwarding*
 ```bash
-kubectl port-forward apache 8080:80
+kubectl port-forward <POD> 8080:80
 ```
 ```bash
 # Si el recurso no existe, se creará.
@@ -108,10 +108,10 @@ kubectl apply -f httpd.yaml
 ```
 ### Exportar configuración de un POD
 ```bash
-kubectl get pod/apache -o yaml > apache.yaml
+kubectl get pod/<POD> -o yaml > apache.yaml
 ```
 ```bash
-kubectl get pod/apache -o json > apache.json
+kubectl get pod/<POD> -o json > apache.json
 ```
 ### Eliminar PODS
 ```bash
