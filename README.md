@@ -13,6 +13,8 @@
   - [Multicontenedores](#Multicontenedores)
   - [Política de reinicio de POD](#Política-de-reinicio-de-POD)
      - [Always](#Always)
+     - [OnFailure](#OnFailure)
+     - [Never](#Never)
  
 ### POD
 
@@ -165,10 +167,48 @@ spec:
 ```
 Si el proceso de Apache termina, Kubernetes iniciará el contenedor nuevamente debido a la política *Always*. El flujo sería el siguiente:
 
-1- Se detiene el servicio httpd. ```/apachectl  stop```
+1- Se detiene el servicio httpd. ```./apachectl  stop```
 
 2- El contenedor deja de ejecutarse ya que no hay proceso principal activo (o el proceso principal termina).
 
 3- Kubernetes detecta que el contenedor ha terminado.
 
 4- Kubernetes reinicia automáticamente el contenedor debido a la política *Always*, lanzando de nuevo Apache.
+
+### OnFailureure
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: on-failure
+  labels:
+    app: app02
+spec:
+  containers:
+   - name: app02
+     image: httpd
+  restartPolicy: OnFailureure
+```
+Si el proceso de Apache termina, Kubernetes no iniciará el contenedor nuevamente debido a la política *OnFailureure*. El flujo sería el siguiente:
+
+1- Se detiene el servicio httpd. ```./apachectl  stop```
+
+2- El contenedor deja de ejecutarse ya que no hay proceso principal activo (o el proceso principal termina).
+
+3- Kubernetes detecta que el contenedor ha terminado.
+
+4- Kubernetes no reinicia automáticamente el contenedor debido a la política *OnFailureure*.
+### Never
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: never
+  labels:
+    app: app03
+spec:
+  containers:
+   - name: app03
+     image: httpd
+  restartPolicy: Never
+```
