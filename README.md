@@ -167,7 +167,7 @@ spec:
 ```
 Si el proceso de Apache termina, Kubernetes iniciará el contenedor nuevamente debido a la política *Always*. El flujo sería el siguiente:
 
-1- Se detiene el servicio httpd. ```./apachectl  stop```
+1- Se detiene el servicio httpd. ```./apachectl stop```
 
 2- El contenedor deja de ejecutarse ya que no hay proceso principal activo (o el proceso principal termina).
 
@@ -191,7 +191,7 @@ spec:
 ```
 Si el proceso de Apache termina, Kubernetes no iniciará el contenedor nuevamente debido a la política *OnFailureure*. El flujo sería el siguiente:
 
-1- Se detiene el servicio httpd. ```./apachectl  stop```
+1- Se detiene el servicio httpd. ```./apachectl stop```
 
 2- El contenedor deja de ejecutarse ya que no hay proceso principal activo (o el proceso principal termina).
 
@@ -204,11 +204,11 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: never
-  labels:
-    app: app03
 spec:
   containers:
-   - name: app03
-     image: httpd
+   - name: mycontainer
+     image: busybox
+     command: ["echo", "Hello, World!"]
   restartPolicy: Never
 ```
+Si el contenedor ejecuta el comando echo "*Hello, World!*" y termina con un código de salida 0 (sin errores), el contenedor no se reiniciará. El pod terminará y se considerará completado.
