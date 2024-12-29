@@ -328,7 +328,7 @@ kubectl scale deployment <Deployment> --replicas=<Número de réplicas>
 Ejeemplo, crear un Deployment de Apache2, luego crear un servicio:
 ```bash
 
-# Crear el *deploy*.
+# Crear el 'deploy'.
 kubectl create deployment apache2 --image=httpd
 
 # Crear el servicio.
@@ -342,7 +342,7 @@ apache2      NodePort    10.104.246.7   <none>        80:30746/TCP   20s
 minikube ip
 192.168.59.101
 
-# Acceso al *deploy* a través del servicio
+# Acceso al 'deploy' a través del servicio
 curl -s http://192.168.59.101:30746
 <html><body><h1>It works!</h1></body></html>
 ```
