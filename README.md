@@ -397,36 +397,36 @@ curl -s http://web-server
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: php-deployment   # Añadir un nombre para la Deployment
+  name: php-deployment               # Añadir un nombre para la Deployment
 spec:
-  replicas: 2            # Especifica cuántos pods deseas ejecutar
-  selector:              # Permite seleccionar el conjunto de pods mediante etiquetas
+  replicas: 2                        # Especifica cuántos pods deseas ejecutar
+  selector:                          # Permite seleccionar el conjunto de pods mediante etiquetas
     matchLabels:
       app: php
-  template:              # Plantilla que define los contenedores dentro del pod
+  template:                          # Plantilla que define los contenedores dentro del pod
     metadata:
       labels:
-        app: php         # Etiqueta asociada con los pods creados por este 'Deployment'
+        app: php                     # Etiqueta asociada con los pods creados por este 'Deployment'
     spec:
       containers:
-      - name: php        # Nombre del contenedor
-        image: arestrepo/php:v1  # Imagen del contenedor
+      - name: php                    # Nombre del contenedor
+        image: arestrepo/php:v1      # Imagen del contenedor
         ports:
-        - containerPort: 80  # Puerto en el que el contenedor escuchará
+        - containerPort: 80          # Puerto en el que el contenedor escuchará
 ---
 # SERVICIO  
 apiVersion: v1
 kind: Service
 metadata:
-  name: php-svc      # Nombre del servicio
+  name: php-svc                      # Nombre del servicio
   labels:
     app: php
 spec:
-  type: NodePort     # Tipo de servicio expuesto a través de un puerto en cada nodo
+  type: NodePort                     # Tipo de servicio expuesto a través de un puerto en cada nodo
   ports:
-  - port: 80         # Puerto interno del servicio
-    nodePort: 30002   # Puerto accesible desde fuera del clúster
+  - port: 80                         # Puerto interno del servicio
+    nodePort: 30002                  # Puerto accesible desde fuera del clúster
     protocol: TCP     
   selector:
-    app: php          # Este servicio se dirige a los pods que tengan la etiqueta 'app=php'
+    app: php                         # Este servicio se dirige a los pods que tengan la etiqueta 'app=php'
 ```
