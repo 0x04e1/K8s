@@ -25,11 +25,11 @@
    - [Edit](#Edit)
    - [Escalar un Deployment](#Escalar-un-Deployment)
 - [Servicios](#Servicios)
-   -[Exponer servicios](#Exponer-Servicios)
-       - [NodePort](#NodePort)
-       - [LoadBalancer](#LoadBalancer)
-       - [ClusterIP](#ClusterIP)
-    - [EndPoints](#EndPoints)
+  - [Exponer servicios](#Exponer-Servicios)
+    - [NodePort](#NodePort)
+    - [LoadBalancer](#LoadBalancer)
+    - [ClusterIP](#ClusterIP)
+  - [EndPoints](#EndPoints)
   
 ### POD
 
