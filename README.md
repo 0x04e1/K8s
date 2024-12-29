@@ -256,7 +256,7 @@ kubectl delete pods -l 'entorno notin(pdn)'
 kubectl get pod/<POD> -o jsonpath={.metadata.annotations}
 ```
 ### Deployments
-Creado *deploy*
+Crear *Deployments*
 ```bash
 # Mínimamente se creará un POD
 kubectl create deployment apache2 --image=httpd
@@ -266,4 +266,8 @@ kubectl get rs
 
 # Para ver el *Deployment* creado
 kubectl get deployments
+```
+Detalle del *Deployment*
+```bash
+kubectl describe deployments
 ```
