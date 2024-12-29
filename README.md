@@ -28,6 +28,7 @@
    - [NodePort](#NodePort)
    - [LoadBalancer](#LoadBalancer)
    - [ClusterIP](#ClusterIP)
+   - [EndPoints](#EndPoints)
   
 ### POD
 
@@ -429,4 +430,9 @@ spec:
     protocol: TCP     
   selector:
     app: php                         # Este servicio se dirige a los pods que tengan la etiqueta 'app=php'
+```
+### EndPoints
+Para ver la relación de servicios publicados, basta con:
+```bash
+kubectl get endpointsp
 ```
