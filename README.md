@@ -370,9 +370,24 @@ curl -s http://192.168.59.101:30196
 ```
 
 ### ClusterIP
-kubectl create deployment web-server --image=arestrepo/php:v1 --replicas=2
+
+Un *ClusterIP* es un tipo de servicio que proporciona una dirección IP virtual dentro del clúster.
+
+Ejemplo:
+```bash
+# Crear el 'deploy'.
+kubectl create deployment web-server --image=httpd --replicas=2
 kubectl create deployment cliente --image=debian -- /bin/sh -c "sleep 3600"
 
-kubectl create deployment cliente --image=debian -- /bin/sh -c "sleep 3600"
+# Crear el servicio.
+kubectl expose deploy web-server --port=80 --type=ClusterIP
 
+# Obtener los servicios.
+kubectl get svc
+NAME         TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)   AGE
+web-server   ClusterIP   10.97.31.76   <none>        80/TCP    58m
+
+# Desde el cliente, basta con ejecutar curl para acceder al servicio de Apache2, el cual será
+# balanceado entre los PODS del 'deploy'
 curl -s http://web-server
+```
