@@ -250,3 +250,7 @@ kubectl get pods --show-labels -l 'entorno notin(dev)'
 kubectl delete pods -l 'entorno notin(pdn)'
 ```
 ### Descriptors
+```bash
+# Localizar anotaciones
+kubectl get pod/<POD> -o jsonpath={.metadata.annotations}
+```
