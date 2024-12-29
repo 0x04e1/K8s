@@ -279,3 +279,24 @@ Para explotar la configuración del *deploy* realizado:
 kubectl get deploy apache2 -o yaml
 ```
 ### Crear un Deployment de manera declarativa
+```yaml
+apiVersion: apps/v1 # i se Usa apps/v1beta2 para versiones anteriores a 1.9.0
+kind: Deployment
+metadata:
+  name: apache-dply
+spec:
+  selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
+    matchLabels:
+      app: apache
+  replicas: 2 # indica al controlador que ejecute 2 pods
+  template:   # Plantilla que define los containers
+    metadata:
+      labels:
+        app: apache
+    spec:
+      containers:
+      - name: apache2
+        image: httpd
+        ports:
+        - containerPort: 80
+```
