@@ -370,6 +370,7 @@ curl -s http://192.168.59.101:30196
 ```
 
 ### ClusterIP
+![ClusterIP](images/ClusterIP.png)
 
 Un *ClusterIP* es un tipo de servicio que proporciona una dirección IP virtual dentro del clúster.
 
