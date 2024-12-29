@@ -229,5 +229,25 @@ Sobreescribir una etiqueta
 ```bash
 kubectl label --overwrite pod/<POD> version=2.0
 ```
-## Selectors
-123
+### Selectors
+Buscar en la eqtiqueta el valor x
+```bash
+kubectl get pods --show-labels -l llave=valor
+kubectl get pods --show-labels -l llave=valor,llave=valor,llave=valor,...
+
+# Buscar cuyo valor no sea x
+kubectl get pods --show-labels -l llave!=valor
+
+# Conjuntos
+X se encuentre en el conjunto de pods, ejemplo:
+kubectl get pods --show-labels -l 'entorno in(pdn)'
+kubectl get pods --show-labels -l 'entorno in(pdn,dev)'
+
+#Negación
+kubectl get pods --show-labels -l 'entorno notin(dev)'
+
+# Eliminar los PODS que no tengan la etiqueta pdn
+kubectl delete pods -l 'entorno notin(pdn)'
+```
+
+### Anotaciones
