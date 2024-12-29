@@ -25,9 +25,10 @@
    - [Edit](#Edit)
    - [Escalar un Deployment](#Escalar-un-Deployment)
 - [Servicios](#Servicios)
-   - [NodePort](#NodePort)
-   - [LoadBalancer](#LoadBalancer)
-   - [ClusterIP](#ClusterIP)
+   -[Exponer servicios](#Exponer-Servicios)
+     - [NodePort](#NodePort)
+     - [LoadBalancer](#LoadBalancer)
+     - [ClusterIP](#ClusterIP)
    - [EndPoints](#EndPoints)
   
 ### POD
@@ -322,6 +323,8 @@ kubectl edit deploy <Deployment>
 kubectl scale deployment <Deployment> --replicas=<Número de réplicas>
 ```
 ### Servicios
+
+### Exponer servicios
 *Un servicio en Kubernetes es una abstracción que define un conjunto lógico de pods y una política para acceder a ellos.*
 
 ### NodePort
