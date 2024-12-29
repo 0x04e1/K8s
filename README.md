@@ -20,6 +20,7 @@
    - [Selectors](#Selectors)
    - [Descriptors](#Descriptors)
 - [Deployments](#Deployments)
+   - [Crear Depoloyment](#Crear-Deployment)
 
 ### POD
 
@@ -256,6 +257,7 @@ kubectl delete pods -l 'entorno notin(pdn)'
 kubectl get pod/<POD> -o jsonpath={.metadata.annotations}
 ```
 ### Deployments
+#### Crear Deployment
 Crear *Deployments*
 ```bash
 # Mínimamente se creará un POD
