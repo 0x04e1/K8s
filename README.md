@@ -333,6 +333,8 @@ kubectl create deployment apache2 --image=httpd
 
 # Crear el servicio.
 kubectl expose deploy apache2 --port=80 --type=NodePort
+
+# Obtener los servicios
 kubectl get svc
 NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
 apache2      NodePort    10.104.246.7   <none>        80:30746/TCP   20s
