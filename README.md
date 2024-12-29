@@ -23,6 +23,7 @@
    - [Crear Depoloyment](#Crear-Deployment)
    - [Crear un Deployment de manera declarativa](#Crear-un-Deployment-de-manera-declarativa)
    - [Edit](#Edit)
+   - [Escalar un Deployment](#Escalar-un-Deployment)
 
 ### POD
 
@@ -310,4 +311,8 @@ kubectl get deploy,rs,pods --show-labels -l app=apache
 Permite modificar el *deploy* si necesidad de contar el *manifiest*.
 ```bash
 kubectl edit deploy <Deployment>
+```
+### Escalar un Deployment
+```bash
+kubectl scale deployment <Deployment> --replicas=<Número de réplicas>
 ```
