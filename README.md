@@ -30,6 +30,7 @@
     - [LoadBalancer](#LoadBalancer)
     - [ClusterIP](#ClusterIP)
   - [EndPoints](#EndPoints)
+- [Namespaces](#Namespaces)
   
 ### POD
 
@@ -438,4 +439,18 @@ spec:
 Para ver la relación de servicios publicados, basta con:
 ```bash
 kubectl get endpointsp
+```
+### Namespaces
+Creación de manera imperactiva:
+```bash
+kubectl create namespace pdn
+```
+Creación de manera declarativa:
+```yml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pdn1
+  labels:
+     tipo: pdn
 ```
