@@ -325,9 +325,8 @@ kubectl scale deployment <Deployment> --replicas=<Número de réplicas>
 
 ### NodePort
 
-Ejeemplo, crear un Deployment de Apache2, luego crear un servicio:
+Ejemplo, crear un *Deployment* de Apache2, luego crear un servicio de tipo *NodePort*:
 ```bash
-
 # Crear el 'deploy'.
 kubectl create deployment apache2 --image=httpd
 
@@ -344,5 +343,28 @@ minikube ip
 
 # Acceso al 'deploy' a través del servicio
 curl -s http://192.168.59.101:30746
+<html><body><h1>It works!</h1></body></html>
+```
+
+### LoadBalancer
+
+Ejemplo, crear un *Deployment* de Apache2, luego crear un servicio de tipo *LoadBalancer*:
+```bash
+# Crear el 'deploy'.
+kubectl create deployment apache2 --image=httpd --replicas=5
+
+# Crear el servicio.
+kubectl expose deploy apache2 --port=80 --name=svc-apache --type=LoadBalancer
+
+# Obtener los servicios
+kubectl get svc
+NAME         TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+svc-apache   LoadBalancer   10.108.78.172   <pending>     80:30196/TCP   3m36s
+
+minikube ip
+192.168.59.101
+
+# Acceso al 'deploy' a través del servicio
+curl -s http://192.168.59.101:30196
 <html><body><h1>It works!</h1></body></html>
 ```
