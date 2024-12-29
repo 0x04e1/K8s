@@ -249,5 +249,4 @@ kubectl get pods --show-labels -l 'entorno notin(dev)'
 # Eliminar los PODS que no tengan la etiqueta pdn
 kubectl delete pods -l 'entorno notin(pdn)'
 ```
-
-### Anotaciones
+### Descriptors
