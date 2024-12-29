@@ -229,3 +229,5 @@ Sobreescribir una etiqueta
 ```bash
 kubectl label --overwrite pod/<POD> version=2.0
 ```
+## Selectors
+123
