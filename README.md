@@ -31,6 +31,7 @@
     - [ClusterIP](#ClusterIP)
   - [EndPoints](#EndPoints)
 - [Namespaces](#Namespaces)
+    - [Cambiar de namespace por defecto](#Cambiar-de-namespace-por-defecto)
   
 ### POD
 
@@ -492,4 +493,8 @@ spec:
       protocol: TCP
   selector:
     app: app-php
+```
+### Cambiar de namespace por defecto
+```bash
+kubectl config set-context --current --namespace=dev1
 ```
