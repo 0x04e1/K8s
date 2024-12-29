@@ -19,6 +19,7 @@
    - [Labels](#Labels)
    - [Selectors](#Selectors)
    - [Descriptors](#Descriptors)
+- [Deployments](#Deployments)
 
 ### POD
 
@@ -254,3 +255,4 @@ kubectl delete pods -l 'entorno notin(pdn)'
 # Localizar anotaciones
 kubectl get pod/<POD> -o jsonpath={.metadata.annotations}
 ```
+### Deployments
