@@ -21,7 +21,7 @@
    - [Descriptors](#Descriptors)
 - [Deployments](#Deployments)
    - [Crear Depoloyment](#Crear-Deployment)
-   - [Crear un *Deployment* de manera declarativa](#Crear-un-*Deployment*-de-manera-declarativa)
+   - [Crear un Deployment de manera declarativa](#Crear-un-Deployment-de-manera-declarativa)
 
 ### POD
 
@@ -278,4 +278,4 @@ Para explotar la configuración del *deploy* realizado:
 ```bash
 kubectl get deploy apache2 -o yaml
 ```
-### Crear un *Deployment* de manera declarativa
+### Crear un Deployment de manera declarativa
