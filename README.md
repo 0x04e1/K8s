@@ -410,7 +410,7 @@ spec:
     spec:
       containers:
       - name: php                    # Nombre del contenedor
-        image: arestrepo/php:v1      # Imagen del contenedor
+        image: infog/php-app-hostname:latest
         ports:
         - containerPort: 80          # Puerto en el que el contenedor escuchará
 ---
