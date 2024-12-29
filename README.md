@@ -454,7 +454,7 @@ metadata:
   labels:
      tipo: pdn
 ```
-Creación de Deployment en Namespace diferente a Default.
+Creación de *Deployment* en *Namespace* diferente a *Default*.
 ```yml
 apiVersion: apps/v1
 kind: Deployment
