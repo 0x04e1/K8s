@@ -24,7 +24,11 @@
    - [Crear un Deployment de manera declarativa](#Crear-un-Deployment-de-manera-declarativa)
    - [Edit](#Edit)
    - [Escalar un Deployment](#Escalar-un-Deployment)
-
+- [Servicios](#Servicios)
+   - [NodePort](#NodePort)
+   - [LoadBalancer](#LoadBalancer)
+   - [ClusterIP](#ClusterIP)
+  
 ### POD
 
 ## Crear POD
@@ -315,4 +319,28 @@ kubectl edit deploy <Deployment>
 ### Escalar un Deployment
 ```bash
 kubectl scale deployment <Deployment> --replicas=<Número de réplicas>
+```
+### Servicios
+*Un servicio en Kubernetes es una abstracción que define un conjunto lógico de pods y una política para acceder a ellos.*
+
+### NodePort
+
+Ejeemplo, crear un Deployment de Apache2, luego crear un servicio:
+```bash
+
+# Crear el *deploy*.
+kubectl create deployment apache2 --image=httpd
+
+# Crear el servicio.
+kubectl expose deploy apache2 --port=80 --type=NodePort
+kubectl get svc
+NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+apache2      NodePort    10.104.246.7   <none>        80:30746/TCP   20s
+
+minikube ip
+192.168.59.101
+
+# Acceso al *deploy* a través del servicio
+curl -s http://192.168.59.101:30746
+<html><body><h1>It works!</h1></body></html>
 ```
