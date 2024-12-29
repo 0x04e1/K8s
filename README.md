@@ -368,3 +368,11 @@ minikube ip
 curl -s http://192.168.59.101:30196
 <html><body><h1>It works!</h1></body></html>
 ```
+
+### ClusterIP
+kubectl create deployment web-server --image=arestrepo/php:v1 --replicas=2
+kubectl create deployment cliente --image=debian -- /bin/sh -c "sleep 3600"
+
+kubectl create deployment cliente --image=debian -- /bin/sh -c "sleep 3600"
+
+curl -s http://web-server
