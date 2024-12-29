@@ -309,5 +309,5 @@ kubectl get deploy,rs,pods --show-labels -l app=apache
 ### Edit
 Permite modificar el *deploy* si necesidad de contar el *manifiest*.
 ```bash
-kubectl edit deploy apache-dply
+kubectl edit deploy <Deployment>
 ```
