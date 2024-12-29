@@ -454,3 +454,42 @@ metadata:
   labels:
      tipo: pdn
 ```
+Creación de Deployment en Namespace diferente a Default.
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-namespace-dev
+  namespace: dev1  # Asegúrate de que el deployment esté en el namespace correcto
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-php
+  template:
+    metadata:
+      labels:
+        app: app-php
+    spec:
+      containers:
+      - name: contenedorennsdev1
+        image: httpd
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: php-svc
+  namespace: dev1  # Especificar el namespace
+  labels:
+    app: app-php
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      nodePort: 30006
+      protocol: TCP
+  selector:
+    app: app-php
+```
