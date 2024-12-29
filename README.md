@@ -22,6 +22,7 @@
 - [Deployments](#Deployments)
    - [Crear Depoloyment](#Crear-Deployment)
    - [Crear un Deployment de manera declarativa](#Crear-un-Deployment-de-manera-declarativa)
+   - [Edit](#Edit)
 
 ### POD
 
@@ -299,4 +300,14 @@ spec:
         image: httpd
         ports:
         - containerPort: 80
+```
+Búsqueda de información de los *deploys* creado
+```bash
+kubectl get deploy,rs,pods
+kubectl get deploy,rs,pods --show-labels -l app=apache
+```
+### Edit
+Permite modificar el *deploy* si necesidad de contar el *manifiest*.
+```bash
+kubectl edit deploy apache-dply
 ```
