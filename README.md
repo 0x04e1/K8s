@@ -500,6 +500,8 @@ spec:
 kubectl config set-context --current --namespace=dev1
 ```
 ### Límite de CPU y RAM
+El *LimitRange* se utiliza para establecer límites y solicitudes predeterminadas de recursos para los contenedores dentro del *namespace*.
+
 ```yml
 apiVersion: v1
 kind: Namespace
@@ -507,6 +509,7 @@ metadata:
   name: dev
 
 ---
+
 apiVersion: v1
 kind: LimitRange
 metadata:
@@ -521,4 +524,7 @@ spec:
       memory: 256Mi
       cpu: 250m
     type: Container
+```
+```bash
+kubectl describe limitrange my-limitrange -n dev
 ```
