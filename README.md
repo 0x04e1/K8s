@@ -765,7 +765,6 @@ kubectl describe cm mi-cm
 ### Desde archivos
 Teniendo el siguiente archivo ```file.properties```:
 ```
-MYSQL_ROOT_PASSWORD=kubernetes
 MYSQL_USER=usudb
 MYSQL_PASSWORD=usupass
 MYSQL_DATABASE=kubernetes
