@@ -774,6 +774,7 @@ Para crear el ConfigMap:
 kubectl create configmap data --from-file=file.properties
 ```
 :warning: Nota: observe que solo aparece una línea, cuando en realidad hay cuatro.
+
 Creación del Pod al cual se le cargará esta configuración:
 ```yaml
 apiVersion: v1
