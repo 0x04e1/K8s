@@ -41,6 +41,7 @@
     - [Variables](#Variables)
     -  [ConfigMaps](#ConfigMaps)
        - [Desde archivos](#Desde-archivos)
+       - [Cargar variables desde archivos](#Cargar-variables-desde-archivos)
     -  [Secrets](#Secrets)
 
 ### POD
@@ -807,5 +808,42 @@ echo $MYSQL_USER
 echo $MYSQL_PASSWORD
 echo $MYSQL_DATABASE
 ```
+### Cargar variables desde archivos
+Teniendo el siguiente archivo ```file.properties```:
+```
+MYSQL_ROOT_PASSWORD=kubernetes
+MYSQL_USER=usudb
+MYSQL_PASSWORD=usupass
+MYSQL_DATABASE=kubernetes
+```
+Para crear el ConfigMap:
+```bash
+kubectl create configmap data --from-env-file=file.properties
+```
+:warning: Nota: observe que solo aparece una línea, cuando en realidad hay uno.
 
-### Secrets
+Creación del Pod al cual se le cargará esta configuración:
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  restartPolicy: Never
+  containers:
+    - name: test-container
+      image: busybox
+      envFrom:
+        - configMapRef:
+            name: datos-env  # Aquí cargamos las variables del ConfigMap 'datos-env'
+      command: [ "sleep", "3600" ]  # Mantiene el contenedor activo durante 3600 segundos
+```
+La información, se cargó como variables de enetorno (hay salida de $MYSQL_USER, $MYSQL_PASSWORD y $MYSQL_DATABASE).
+```sh
+env | grep MYSQL
+
+MYSQL_ROOT_PASSWORD=kubernetes
+MYSQL_PASSWORD=usupass
+MYSQL_USER=usudb
+MYSQL_DATABASE=kubernetes
+```
