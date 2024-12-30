@@ -35,7 +35,7 @@
     - [Límite de CPU y RAM](#Límite-de-CPU-y-RAM)
     - [Eventos](#Eventos)
     - [Rolling Update](#Rolling-Update)
-       - [maxUnavailable, maxSurge y minReadySeconds](#maxUnavailable,-maxSurge-y-minReadySeconds)
+       - [maxUnavailable, maxSurge y minReadySeconds](#maxunavailable-maxsurge-y-minreadyseconds)
   
 ### POD
 
