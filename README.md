@@ -773,11 +773,6 @@ Para crear el ConfigMap:
 ```bash
 kubectl create configmap data --from-file=file.properties
 ```
-```bash
-NAME               DATA   AGE
-data               1      18m
-kube-root-ca.crt   1      3d19h
-```
 Nota: observe que solo aparece una línea, cuando en realidad hay cuatro.
 Creación del Pod al cual se le cargará esta configuración:
 ```yaml
