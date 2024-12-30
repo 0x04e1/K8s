@@ -758,5 +758,6 @@ Para crearlo de manera imperactiva:
 kubectl create configmap mi-cm --from-literal=IP=127.0.0.1 --from-literal=usr=admin --from-literal=pass=123
 kubectl get cm
 kubectl get configmaps mi-cm -o yam
+kubectl describe cm mi-cm
 ```
 ### Secrets
