@@ -34,8 +34,10 @@
     - [Cambiar de namespace por defecto](#Cambiar-de-namespace-por-defecto)
     - [Límite de CPU y RAM](#Límite-de-CPU-y-RAM)
     - [Eventos](#Eventos)
-    - [Rolling Update](#Rolling-Update)
-       - [maxUnavailable, maxSurge y minReadySeconds](#maxunavailable-maxsurge-y-minreadyseconds)
+  - [Rolling Update](#Rolling-Update)
+    - [maxUnavailable, maxSurge y minReadySeconds](#maxunavailable-maxsurge-y-minreadyseconds)
+    - [Rollback](#Rollback)
+- [Variables, ConfigMaps y Secrets](#variables-configmaps-y-secrets)
   
 ### POD
 
@@ -638,6 +640,39 @@ spec:
 
 ```
 En este ejemplo:
-1. maxSurge: **1**: Durante la actualización, Kubernetes puede crear hasta 1 Pod extra, por lo que podría haber 4 pods momentáneamente.
-2. maxUnavailable: **1**: Durante la actualización, Kubernetes puede eliminar hasta 1 pod a la vez, lo que significa que al menos 2 de los 3 Pods estarán disponibles todo el tiempo.
-3. minReadySeconds: **10**: Los nuevos Pods deben estar en estado *"Ready"* durante al menos 10 segundos antes de que Kubernetes los considere listos para recibir tráfico.
++ maxSurge: **1**: Durante la actualización, Kubernetes puede crear hasta 1 Pod extra, por lo que podría haber 4 pods momentáneamente.
++ maxUnavailable: **1**: Durante la actualización, Kubernetes puede eliminar hasta 1 pod a la vez, lo que significa que al menos 2 de los 3 Pods estarán disponibles todo el tiempo.
++ minReadySeconds: **10**: Los nuevos Pods deben estar en estado *"Ready"* durante al menos 10 segundos antes de que Kubernetes los considere listos para recibir tráfico.
+
+### Rollback
+Es el proceso de revertir un cambio realizado en un recurso (como un *Deployment*, *StatefulSet*, etc.) a una versión anterior que estaba funcionando correctamente.
+```bash
+kubectl rollout undo deployment httpd-deployment --to-revision=<número_de_revisión>
+```
+### Recreate
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-deployment
+spec:
+  replicas: 3
+  strategy:
+    type: Recreate  # Se usa la estrategia 'Recreate'
+  selector:
+    matchLabels:
+      app: httpd
+  template:
+    metadata:
+      labels:
+        app: httpd
+    spec:
+      containers:
+      - name: httpd
+        image: httpd:latest
+```
+*Recreate* hace que Kubernetes elimine todos los pods actuales de un Deployment y los reemplace por los nuevos pods de una sola vez.
+
+### Variables, ConfigMaps y Secrets
+d
