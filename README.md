@@ -40,6 +40,7 @@
 - [Variables, ConfigMaps y Secrets](#variables-configmaps-y-secrets)
     - [Variables](#Variables)
     -  [ConfigMaps](#ConfigMaps)
+       - [Desde archivos](#Desde-archivos)
     -  [Secrets](#Secrets)
 
 ### POD
@@ -759,5 +760,36 @@ kubectl create configmap mi-cm --from-literal=IP=127.0.0.1 --from-literal=usr=ad
 kubectl get cm
 kubectl get configmaps mi-cm -o yam
 kubectl describe cm mi-cm
+```
+### Desde archivos
+Teniendo el siguiente archivo ```file.properties```:
+```
+MYSQL_ROOT_PASSWORD=kubernetes
+MYSQL_USER=usudb
+MYSQL_PASSWORD=usupass
+MYSQL_DATABASE=kubernetes
+```
+```bash
+kubectl create configmap data --from-file=file.properties
+```
+```bash
+kubectl describe cm/data
+```
+```
+Name:         data
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Data
+====
+file.properties:
+----
+MYSQL_ROOT_PASSWORD=kubernetes
+MYSQL_USER=usudb
+MYSQL_PASSWORD=usupass
+MYSQL_DATABASE=kubernetes
+
+Events:  <none>
 ```
 ### Secrets
