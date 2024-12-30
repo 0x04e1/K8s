@@ -623,7 +623,7 @@ spec:
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 1
-      minReadySeconds: 10
+  minReadySeconds: 10
   selector:
     matchLabels:
       app: httpd
@@ -635,6 +635,7 @@ spec:
       containers:
       - name: httpd
         image: httpd:latest
+
 ```
 En este ejemplo:
 1. maxSurge: **1**: Durante la actualización, Kubernetes puede crear hasta 1 Pod extra, por lo que podría haber 4 pods momentáneamente.
