@@ -773,8 +773,8 @@ Para crear el ConfigMap:
 ```bash
 kubectl create configmap data --from-file=file.properties
 ```
-```bash
 Para ver el detalle del ConfigMap creado:
+```bash
 kubectl get cm
 ```
 ```bash
