@@ -33,6 +33,7 @@
 - [Namespaces](#Namespaces)
     - [Cambiar de namespace por defecto](#Cambiar-de-namespace-por-defecto)
     - [Límite de CPU y RAM](#Límite-de-CPU-y-RAM)
+    - [Eventos](#Eventos)
   
 ### POD
 
@@ -501,6 +502,7 @@ kubectl config set-context --current --namespace=dev1
 ```
 ### Límite de CPU y RAM
 El *LimitRange* se utiliza para establecer límites y solicitudes predeterminadas de recursos para los contenedores dentro del *namespace*.
+En este ejemplo, se creará un *namespace* y se asignará un límite.
 
 ```yml
 apiVersion: v1
@@ -527,4 +529,21 @@ spec:
 ```
 ```bash
 kubectl describe limitrange my-limitrange -n dev
+```
+### Eventos
+```bash
+# Enumerar eventos recientes en el *namespace* predeterminado
+kubectl events
+
+# Enumerar eventos recientes en todos los *namespace*
+kubectl events --all-namespaces
+
+# Enumerar eventos recientes para el pod especificado, luego esperar más eventos y enumerarlos a medida que llegan
+kubectl events --for pod/web-pod-13je7 --watch
+
+# Enumerar eventos recientes en formato YAML
+kubectl events -oyaml
+
+# Enumerar solo eventos recientes de tipo 'Advertencia' o 'Normal'
+kubectl events --types=Advertencia,Normal
 ```
