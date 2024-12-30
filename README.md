@@ -32,6 +32,7 @@
   - [EndPoints](#EndPoints)
 - [Namespaces](#Namespaces)
     - [Cambiar de namespace por defecto](#Cambiar-de-namespace-por-defecto)
+    - [Límite de CPU y RAM](#Límite-de-CPU-y-RAM)
   
 ### POD
 
@@ -497,4 +498,27 @@ spec:
 ### Cambiar de namespace por defecto
 ```bash
 kubectl config set-context --current --namespace=dev1
+```
+### Límite de CPU y RAM
+```yml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: my-limitrange
+  namespace: dev
+spec:
+  limits:
+  - default:
+      memory: 512Mi
+      cpu: 500m
+    defaultRequest:
+      memory: 256Mi
+      cpu: 250m
+    type: Container
 ```
