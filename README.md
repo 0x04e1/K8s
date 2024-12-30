@@ -637,6 +637,6 @@ spec:
         image: httpd:latest
 ```
 En este ejemplo:
-[+] maxSurge: **1**: Durante la actualización, Kubernetes puede crear hasta 1 Pod extra, por lo que podría haber 4 pods momentáneamente.
-[+] maxUnavailable: **1**: Durante la actualización, Kubernetes puede eliminar hasta 1 pod a la vez, lo que significa que al menos 2 de los 3 Pods estarán disponibles todo el tiempo.
-[+] minReadySeconds: **10**: Los nuevos Pods deben estar en estado *"Ready"* durante al menos 10 segundos antes de que Kubernetes los considere listos para recibir tráfico.
+1. maxSurge: **1**: Durante la actualización, Kubernetes puede crear hasta 1 Pod extra, por lo que podría haber 4 pods momentáneamente.
+2. maxUnavailable: **1**: Durante la actualización, Kubernetes puede eliminar hasta 1 pod a la vez, lo que significa que al menos 2 de los 3 Pods estarán disponibles todo el tiempo.
+3. minReadySeconds: **10**: Los nuevos Pods deben estar en estado *"Ready"* durante al menos 10 segundos antes de que Kubernetes los considere listos para recibir tráfico.
