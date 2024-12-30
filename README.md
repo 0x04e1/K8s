@@ -796,16 +796,16 @@ spec:
 ```
 La información, se cargó en un única línea (no hay salida de $MYSQL_USER, $MYSQL_PASSWORD y $MYSQL_DATABASE).
 ```sh
-/ # env | grep DATOS -A3
+env | grep DATOS -A3
+
 DATOS=MYSQL_ROOT_PASSWORD=kubernetes
 MYSQL_USER=usudb
 MYSQL_PASSWORD=usupass
 MYSQL_DATABASE=kubernetes
-/ # echo $MYSQL_USER
 
-/ # echo $MYSQL_PASSWORD
-
-/ # echo $MYSQL_DATABASE
+echo $MYSQL_USER
+echo $MYSQL_PASSWORD
+echo $MYSQL_DATABASE
 ```
 
 ### Secrets
