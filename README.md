@@ -811,7 +811,6 @@ echo $MYSQL_DATABASE
 ### Cargar variables desde archivos
 Teniendo el siguiente archivo ```file.properties```:
 ```
-MYSQL_ROOT_PASSWORD=kubernetes
 MYSQL_USER=usudb
 MYSQL_PASSWORD=usupass
 MYSQL_DATABASE=kubernetes
@@ -842,7 +841,6 @@ La información, se cargó como variables de enetorno (hay salida de $MYSQL_USER
 ```sh
 env | grep MYSQL
 
-MYSQL_ROOT_PASSWORD=kubernetes
 MYSQL_PASSWORD=usupass
 MYSQL_USER=usudb
 MYSQL_DATABASE=kubernetes
