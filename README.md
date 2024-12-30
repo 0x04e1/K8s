@@ -860,7 +860,7 @@ metadata:
   name: cred-mariadb
   namespace: default
 ```
-- Crear el manifiest
+- Crear el manifiesto con las opciones que setearán en el *Deployment* las variables del *ConfigMap*.
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
