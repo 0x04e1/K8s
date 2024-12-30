@@ -783,11 +783,25 @@ data               1      18m
 kube-root-ca.crt   1      3d19h
 ```
 Nota: observe que solo aparece una línea, cuando en realidad hay cuatro.
-```bash
-kubectl describe cm/data
+Creación del Pod al cual se le cargará esta configuración:
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  restartPolicy: Never
+  containers:
+    - name: test-container
+      image: busybox
+      env:
+        - name: DATOS               # Nombre de la variable a setear
+          valueFrom:
+            configMapKeyRef:
+              name: data
+              key: file.properties  # Nombre del ConfigMap
+      command: [ "sleep", "3600" ]
 ```
-
-
 
 
 
