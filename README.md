@@ -775,6 +775,13 @@ kubectl create configmap data --from-file=file.properties
 ```bash
 kubectl describe cm/data
 ```
+```bash
+kubectl get cm
+NAME               DATA   AGE
+data               1      18m
+kube-root-ca.crt   1      3d19h
+mi-cm              3      16m
+```
 ```
 Name:         data
 Namespace:    default
