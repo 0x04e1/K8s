@@ -700,6 +700,58 @@ spec:
         - name: DATABASE_URL
           value: "mongodb://db:27017"
 ```
+Ejemplo creando una BD de MariaDB:
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mariadb
+  template:
+    metadata:
+      labels:
+        app: mariadb
+    spec:
+      containers:
+      - name: mariadb
+        image: mariadb:latest
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: "rootpassword"   # Contraseña para el usuario root
+          - name: MYSQL_DATABASE
+            value: "mydatabase"     # Nombre de la base de datos a crear al inicio
+          - name: MYSQL_USER
+            value: "user"           # Nombre de usuario para la base de datos
+          - name: MYSQL_PASSWORD
+            value: "userpassword"   # Contraseña para el usuario de la base de datos
+        ports:
+          - containerPort: 3306
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb-service
+spec:
+  selector:
+    app: mariadb
+  ports:
+    - protocol: TCP
+      port: 3306        # Puerto en el Service, accesible por otros pods
+      targetPort: 3306  # Puerto en el contenedor donde MariaDB está escuchando
+      nodePort: 30036   #  Puerto en cada nodo para acceder al servicio (ajusta este puerto si es necesario)
+  type: NodePort
+```
+Con esto, es posible conectarse a la DB:
+```bash
+mysql -u user -puserpassword -h 192.168.59.101 -P 30036
+```
+
 ### ConfigMaps
 
 ### Secrets
