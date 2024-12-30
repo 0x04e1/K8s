@@ -34,6 +34,7 @@
     - [Cambiar de namespace por defecto](#Cambiar-de-namespace-por-defecto)
     - [Límite de CPU y RAM](#Límite-de-CPU-y-RAM)
     - [Eventos](#Eventos)
+    - [Rolling Update](#Rolling-Update)
   
 ### POD
 
@@ -546,4 +547,56 @@ kubectl get events -oyaml
 
 # Enumerar solo eventos recientes de tipo 'Advertencia' o 'Normal'
 kubectl get events | grep -E 'Warning|Normal'
+```
+### Rolling Update
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: servicio-apache2
+  labels:
+    estado: "1"
+spec:
+  selector:
+    matchLabels:
+      app: servicio-apache2
+  replicas: 10
+  strategy:
+     type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: servicio-apache2
+    spec:
+      containers:
+      - name: httpd-debian
+        image: httpd
+        ports:
+        - containerPort: 80
+```
+Al aplicar kubectl ```apply -f rolling.yml```, se puede observar los 10 PODS en ejecución, y al realizar el cambio de imagen y posterior ```kubectl apply -f rolling.yml```, se destruirán paulatinamente los PODS.
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: servicio-apache2
+  labels:
+    estado: "1"
+spec:
+  selector:
+    matchLabels:
+      app: servicio-apache2
+  replicas: 10
+  strategy:
+     type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: servicio-apache2
+    spec:
+      containers:
+      - name: httpd-debian
+        image: httpd:2.4.62-bookworm
+        ports:
+        - containerPort: 80
 ```
