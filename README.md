@@ -845,3 +845,72 @@ MYSQL_PASSWORD=usupass
 MYSQL_USER=usudb
 MYSQL_DATABASE=kubernetes
 ```
+### MariaDB
+
+- Crear el ConfigMap.
+```yaml
+apiVersion: v1
+data:
+  MYSQL_DATABASE: k8s-cm
+  MYSQL_PASSWORD: abc123
+  MYSQL_ROOT_PASSWORD: Password1
+  MYSQL_USER: sql-usr
+kind: ConfigMap
+metadata:
+  name: cred-mariadb
+  namespace: default
+```
+- Crear el manifiest
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb-deploy
+  labels:
+    app: mariadb
+    type: db
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: mariadb
+      type: db
+  template:
+    metadata:
+      labels:
+        app: mariadb
+        type: db
+    spec:
+      containers:
+        - name: mariadb
+          image: mariadb
+          ports:
+            - containerPort: 3306
+              name: mariadb
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: cred-mariadb
+                  key: MYSQL_ROOT_PASSWORD
+
+            - name: MYSQL_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: cred-mariadb
+                  key: MYSQL_USER
+            
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: cred-mariadb
+                  key: MYSQL_DATABASE
+
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: cred-mariadb
+                  key: MYSQL_PASSWORD
+```yaml
+
+### Secrets
