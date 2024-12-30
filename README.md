@@ -533,17 +533,17 @@ kubectl describe limitrange my-limitrange -n dev
 ### Eventos
 ```bash
 # Enumerar eventos recientes en el *namespace* predeterminado
-kubectl events
+kubectl get events
 
 # Enumerar eventos recientes en todos los *namespace*
-kubectl events --all-namespaces
+kubectl get events --all-namespaces
 
 # Enumerar eventos recientes para el pod especificado, luego esperar más eventos y enumerarlos a medida que llegan
-kubectl events --for pod/web-pod-13je7 --watch
+kubectl get events --for pod/web-pod-13je7 --watch
 
 # Enumerar eventos recientes en formato YAML
-kubectl events -oyaml
+kubectl get events -oyaml
 
 # Enumerar solo eventos recientes de tipo 'Advertencia' o 'Normal'
-kubectl events --types=Advertencia,Normal
+kubectl get events --types=Advertencia,Normal
 ```
