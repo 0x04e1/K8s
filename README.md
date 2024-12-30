@@ -43,6 +43,7 @@
        - [Desde archivos](#Desde-archivos)
        - [Cargar variables desde archivos](#Cargar-variables-desde-archivos)
        - [MariaDB](#MariaDB)
+       - [Volumen](#Volumen)
     -  [Secrets](#Secrets)
 
 ### POD
@@ -912,4 +913,44 @@ spec:
                   name: cred-mariadb
                   key: MYSQL_PASSWORD
 ```
+### Volumen
+Creación del manifiesto que cargará en el sistema de ficheros la información del ConfigMap.
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  containers:
+    - name: contenedor1
+      image: busybox
+      command: [ "/bin/sh", "-c", "sleep 1000000" ]
+      volumeMounts:
+      - name: volumen-config-map
+        mountPath: /etc/config-map
+  volumes:
+    - name: volumen-config-map
+      configMap:
+        name: config-volumen
+  restartPolicy: Never
+```
+Manifiesto para la creación del *ConfigMap*.
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-volumen
+  namespace: default
+data:
+  ENTORNO: "desarrollo"
+  VERSION: "1.0"
+```
+Dentro del Pod desplegado:
+```bash
+/etc/config-map # cat ENTORNO ; echo
+desarrollo
+/etc/config-map # cat VERSION ; echo
+1.0
+```
+
 ### Secrets
