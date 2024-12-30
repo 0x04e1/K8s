@@ -35,6 +35,7 @@
     - [Límite de CPU y RAM](#Límite-de-CPU-y-RAM)
     - [Eventos](#Eventos)
     - [Rolling Update](#Rolling-Update)
+       - [maxUnavailable, maxSurge y minReadySeconds](#maxUnavailable,-maxSurge-y-minReadySeconds)
   
 ### POD
 
@@ -605,3 +606,37 @@ Para ver el detalle de los rollouts realizados:
 kubectl rollout history deploy servicio-apache2
 kubectl rollout history deploy servicio-apache2 --revision=2
 ```
+### maxUnavailable, maxSurge y minReadySeconds
+[+] maxUnavailable controla cuántos pods pueden estar fuera de servicio.
+[+] maxSurge controla cuántos pods nuevos pueden ser creados mientras se actualiza.
+[+] minReadySeconds asegura que los pods nuevos estén completamente listos antes de que sean considerados como disponibles.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-deployment
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+      minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: httpd
+  template:
+    metadata:
+      labels:
+        app: httpd
+    spec:
+      containers:
+      - name: httpd
+        image: httpd:latest
+```
+En este ejemplo:
+[+] maxSurge: **1**: Durante la actualización, Kubernetes puede crear hasta 1 Pod extra, por lo que podría haber 4 pods momentáneamente.
+[+] maxUnavailable: **1**: Durante la actualización, Kubernetes puede eliminar hasta 1 pod a la vez, lo que significa que al menos 2 de los 3 Pods estarán disponibles todo el tiempo.
+[+] minReadySeconds: **10**: Los nuevos Pods deben estar en estado *"Ready"* durante al menos 10 segundos antes de que Kubernetes los considere listos para recibir tráfico.
