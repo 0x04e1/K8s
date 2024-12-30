@@ -574,7 +574,7 @@ spec:
         ports:
         - containerPort: 80
 ```
-Al aplicar kubectl ```apply -f rolling.yml```, se puede observar los 10 PODS en ejecución, y al realizar el cambio de imagen y posterior ```kubectl apply -f rolling.yml```, se destruirán paulatinamente los PODS.
+Al aplicar kubectl ```apply -f rolling.yml```, se puede observar los 10 PODS en ejecución, y al realizar el cambio de imagen y posterior ```kubectl apply -f rolling.yml```, se destruirán paulatinamente los Pods anteriores y se crearán los nuevos con la imagen indicada.
 ```yml
 apiVersion: apps/v1
 kind: Deployment
