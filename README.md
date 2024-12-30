@@ -847,7 +847,7 @@ MYSQL_DATABASE=kubernetes
 ```
 ### MariaDB
 
-- Crear el ConfigMap.
+- Crear el manifiesto del *ConfigMap*.
 ```yaml
 apiVersion: v1
 data:
