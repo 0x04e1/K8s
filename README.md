@@ -769,20 +769,26 @@ MYSQL_USER=usudb
 MYSQL_PASSWORD=usupass
 MYSQL_DATABASE=kubernetes
 ```
+Para crear el ConfigMap:
 ```bash
 kubectl create configmap data --from-file=file.properties
 ```
 ```bash
-kubectl describe cm/data
-```
-```bash
+Para ver el detalle del ConfigMap creado:
 kubectl get cm
 ```
 ```bash
 NAME               DATA   AGE
 data               1      18m
 kube-root-ca.crt   1      3d19h
-mi-cm              3      16m
 ```
 Nota: observe que solo aparece una línea, cuando en realidad hay cuatro.
+```bash
+kubectl describe cm/data
+```
+
+
+
+
+
 ### Secrets
