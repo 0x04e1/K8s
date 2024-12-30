@@ -539,11 +539,11 @@ kubectl get events
 kubectl get events --all-namespaces
 
 # Enumerar eventos recientes para el pod especificado, luego esperar más eventos y enumerarlos a medida que llegan
-kubectl get events --for pod/web-pod-13je7 --watch
+kubectl get events --field-selector involvedObject.name=<POD> --watch
 
 # Enumerar eventos recientes en formato YAML
 kubectl get events -oyaml
 
 # Enumerar solo eventos recientes de tipo 'Advertencia' o 'Normal'
-kubectl get events --types=Advertencia,Normal
+kubectl get events | grep -E 'Warning|Normal'
 ```
