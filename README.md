@@ -600,3 +600,8 @@ spec:
         ports:
         - containerPort: 80
 ```
+Para ver el detalle de los rollouts realizados:
+```
+kubectl rollout history deploy servicio-apache2
+kubectl rollout history deploy servicio-apache2 --revision=2
+```bash
