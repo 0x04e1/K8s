@@ -911,6 +911,5 @@ spec:
                 configMapKeyRef:
                   name: cred-mariadb
                   key: MYSQL_PASSWORD
-```yaml
-
+```
 ### Secrets
