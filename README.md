@@ -607,9 +607,9 @@ kubectl rollout history deploy servicio-apache2
 kubectl rollout history deploy servicio-apache2 --revision=2
 ```
 ### maxUnavailable, maxSurge y minReadySeconds
-[+] maxUnavailable controla cuántos pods pueden estar fuera de servicio.
-[+] maxSurge controla cuántos pods nuevos pueden ser creados mientras se actualiza.
-[+] minReadySeconds asegura que los pods nuevos estén completamente listos antes de que sean considerados como disponibles.
++ maxUnavailable controla cuántos pods pueden estar fuera de servicio.
++ maxSurge controla cuántos pods nuevos pueden ser creados mientras se actualiza.
++ minReadySeconds asegura que los pods nuevos estén completamente listos antes de que sean considerados como disponibles.
 
 ```yaml
 apiVersion: apps/v1
