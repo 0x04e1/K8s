@@ -777,26 +777,12 @@ kubectl describe cm/data
 ```
 ```bash
 kubectl get cm
+```
+```bash
 NAME               DATA   AGE
 data               1      18m
 kube-root-ca.crt   1      3d19h
 mi-cm              3      16m
 ```
-```
-Name:         data
-Namespace:    default
-Labels:       <none>
-Annotations:  <none>
-
-Data
-====
-file.properties:
-----
-MYSQL_ROOT_PASSWORD=kubernetes
-MYSQL_USER=usudb
-MYSQL_PASSWORD=usupass
-MYSQL_DATABASE=kubernetes
-
-Events:  <none>
-```
+Nota: observe que solo aparece una línea, cuando en realidad hay cuatro.
 ### Secrets
