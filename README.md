@@ -744,7 +744,7 @@ spec:
     - protocol: TCP
       port: 3306        # Puerto en el Service, accesible por otros pods
       targetPort: 3306  # Puerto en el contenedor donde MariaDB está escuchando
-      nodePort: 30036   #  Puerto en cada nodo para acceder al servicio (ajusta este puerto si es necesario)
+      nodePort: 30036   # Puerto en cada nodo para acceder al servicio (ajusta este puerto si es necesario)
   type: NodePort
 ```
 Con esto, es posible conectarse a la DB:
@@ -753,5 +753,10 @@ mysql -u user -puserpassword -h 192.168.59.101 -P 30036
 ```
 
 ### ConfigMaps
-
+Para crearlo de manera imperactiva:
+```bash
+kubectl create configmap mi-cm --from-literal=IP=127.0.0.1 --from-literal=usr=admin --from-literal=pass=123
+kubectl get cm
+kubectl get configmaps mi-cm -o yam
+```
 ### Secrets
