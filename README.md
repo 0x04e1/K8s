@@ -773,10 +773,6 @@ Para crear el ConfigMap:
 ```bash
 kubectl create configmap data --from-file=file.properties
 ```
-Para ver el detalle del ConfigMap creado:
-```bash
-kubectl get cm
-```
 ```bash
 NAME               DATA   AGE
 data               1      18m
