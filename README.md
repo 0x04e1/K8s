@@ -1019,46 +1019,4 @@ spec:
 Se setean en la variable ```$datos```, la información que se gardó en el secreto (scrt.txt).
 
 ### Uso de StringData:
-```bash
-apiVersion: v1
-kind: Secret
-metadata:
-  name: secret
-type: Opaque
-stringData:
-  usr: 'admin'
-  pass: 'Password1'
-```
-En el Pod:
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: busybox-deploy
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: busybox-deploy
-  template:
-    metadata:
-      labels:
-        app: busybox-deploy
-    spec:
-      containers:
-      - name: pod1
-        image: busybox
-        command: ["/bin/sh", "-c", "sleep 999999"]
-        env:
-          - name: SECRET_PASS
-            valueFrom:
-              secretKeyRef:
-                name: secret
-                key: pass
-          - name: SECRET_USR
-            valueFrom:
-              secretKeyRef:
-                name: secret
-                key: usr
-```
 ![Secrets](images/secrets.png)
