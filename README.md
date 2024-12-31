@@ -47,6 +47,7 @@
     -  [Secrets](#Secrets)
        - [De manera interactiva](#De-manera-interactiva)
        - [De manera declarativa](#De-manera-declarativa)
+       - [Desde archivos](#Desde-archivos)
 
 ### Pod
 ## Crear Pod
@@ -973,3 +974,45 @@ kubectl get secret creds -o jsonpath='{.data.password}' | base64 --decode
 Creación de base de datos MariaDB con *Deployment* con *ConfigMap* y *Secrets*.
 
 ![Secrets](images/app-secret.png)
+
+### Desde archivos
+```
+Esto es un secreto de prueba.
+Pero las credenciales son: admin:admin
+El servidor: http://127.0.0.1
+```
+```bash
+kubectl create secret generic datos_confidenciales --from-file=scrt.txt
+```
+Para ver el detalle del secreto recién creado:
+```bash
+kubectl get secret datos-confidenciales -o yaml
+```bash
+En el Pod:
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: busybox-deploy
+  template:
+    metadata:
+      labels:
+        app: busybox-deploy
+    spec:
+      containers:
+      - name: pod1
+        image: busybox
+        command: ["/bin/sh", "-c", "sleep 999999"]
+        env:
+          - name: datos
+            valueFrom:
+              secretKeyRef:
+                name: datos-confidenciales
+                key: scrt.txt
+```
+Se setean en la variable ```$datos```, la información que se gardó en el secreto (scrt.txt).
