@@ -1030,3 +1030,34 @@ stringData:
   pass: 'Password1'
 ```
 En el Pod:
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: busybox-deploy
+  template:
+    metadata:
+      labels:
+        app: busybox-deploy
+    spec:
+      containers:
+      - name: pod1
+        image: busybox
+        command: ["/bin/sh", "-c", "sleep 999999"]
+        env:
+          - name: SECRET_PASS
+            valueFrom:
+              secretKeyRef:
+                name: secret
+                key: pass
+          - name: SECRET_USR
+            valueFrom:
+              secretKeyRef:
+                name: secret
+                key: usr
+```
