@@ -987,7 +987,7 @@ kubectl create secret generic datos_confidenciales --from-file=scrt.txt
 Para ver el detalle del secreto recién creado:
 ```bash
 kubectl get secret datos-confidenciales -o yaml
-```bash
+```
 En el Pod:
 ```yaml
 apiVersion: apps/v1
