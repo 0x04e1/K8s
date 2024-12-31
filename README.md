@@ -48,6 +48,7 @@
        - [De manera interactiva](#De-manera-interactiva)
        - [De manera declarativa](#De-manera-declarativa)
        - [Desde un fichero](#Desde-un-fichero)
+       - [Uso de StringData](#uso-de-stringdata)
 
 ### Pod
 ## Crear Pod
@@ -1017,24 +1018,14 @@ spec:
 ```
 Se setean en la variable ```$datos```, la información que se gardó en el secreto (scrt.txt).
 
-Otro ejemplo:
+### Uso de StringData:
 ```bash
 apiVersion: v1
 kind: Secret
 metadata:
-  name: secret1
+  name: secret2
 type: Opaque
-data:
-  usr: dXN1MQ==
-  pass: cGFzc3dvcmQtdXN1MQ==
-```
-```bash
-apiVersion: v1
-kind: Secret
-metadata:
-  name: secret1
-type: Opaque
-data:
-  usr: dXN1MQ==
-  pass: cGFzc3dvcmQtdXN1MQ==
+stringData:
+  usuario2: 'admin'
+  usu2-pass: 'Password1'
 ```
