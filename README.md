@@ -968,3 +968,4 @@ kubectl get secret creds -o jsonpath='{.data.usr}' | base64 --decode
 ```bash
 kubectl get secret creds -o jsonpath='{.data.password}' | base64 --decode
 ```
+![ClusterIP](images/app-secret.png)
