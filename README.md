@@ -954,3 +954,17 @@ desarrollo
 ```
 
 ### Secrets
+*Un secreto es un objeto que contiene una pequeña cantidad de datos confidenciales, como una contraseña, un token o una clave.*
+```bash
+Creación de secretos de manera imperactiva.
+kubectl create secret generic creds \
+  --from-literal=usr=admin \
+  --from-literal=password=admin
+```
+Para rescatar los secretos:
+```bash
+kubectl get secret creds -o jsonpath='{.data.usr}' | base64 --decode
+```
+```bash
+kubectl get secret creds -o jsonpath='{.data.password}' | base64 --decode
+```
