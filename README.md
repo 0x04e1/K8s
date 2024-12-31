@@ -1061,3 +1061,4 @@ spec:
                 name: secret
                 key: usr
 ```
+![Secrets](images/secrets.png)
