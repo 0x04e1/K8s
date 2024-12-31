@@ -47,7 +47,7 @@
     -  [Secrets](#Secrets)
        - [De manera interactiva](#De-manera-interactiva)
        - [De manera declarativa](#De-manera-declarativa)
-       - [Desde archivos](#Desde-archivos)
+       - [Desde un fichero](#Desde-un-fichero)
 
 ### Pod
 ## Crear Pod
@@ -975,7 +975,7 @@ Creación de base de datos MariaDB con *Deployment* con *ConfigMap* y *Secrets*.
 
 ![Secrets](images/app-secret.png)
 
-### Desde archivos
+### Desde un fichero
 ```
 Esto es un secreto de prueba.
 Pero las credenciales son: admin:admin
