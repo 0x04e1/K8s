@@ -952,7 +952,6 @@ desarrollo
 /etc/config-map # cat VERSION ; echo
 1.0
 ```
-
 ### Secrets
 *Un secreto es un objeto que contiene una pequeña cantidad de datos confidenciales, como una contraseña, un token o una clave.*
 ```bash
@@ -968,4 +967,5 @@ kubectl get secret creds -o jsonpath='{.data.usr}' | base64 --decode
 ```bash
 kubectl get secret creds -o jsonpath='{.data.password}' | base64 --decode
 ```
-![ClusterIP](images/app-secret.png)
+Creación de base de datos MariaDB con *Deployment* con *ConfigMap* y *Secrets*.
+![Secrets](images/app-secret.png)
