@@ -1023,9 +1023,10 @@ Se setean en la variable ```$datos```, la información que se gardó en el secre
 apiVersion: v1
 kind: Secret
 metadata:
-  name: secret2
+  name: secret
 type: Opaque
 stringData:
-  usuario2: 'admin'
-  usu2-pass: 'Password1'
+  usr: 'admin'
+  pass: 'Password1'
 ```
+En el Pod:
