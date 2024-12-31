@@ -971,4 +971,5 @@ kubectl get secret creds -o jsonpath='{.data.password}' | base64 --decode
 ```
 ### De manera declarativa
 Creación de base de datos MariaDB con *Deployment* con *ConfigMap* y *Secrets*.
+
 ![Secrets](images/app-secret.png)
