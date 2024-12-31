@@ -1016,3 +1016,25 @@ spec:
                 key: scrt.txt
 ```
 Se setean en la variable ```$datos```, la información que se gardó en el secreto (scrt.txt).
+
+Otro ejemplo:
+```bash
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret1
+type: Opaque
+data:
+  usr: dXN1MQ==
+  pass: cGFzc3dvcmQtdXN1MQ==
+```
+```bash
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret1
+type: Opaque
+data:
+  usr: dXN1MQ==
+  pass: cGFzc3dvcmQtdXN1MQ==
+```
