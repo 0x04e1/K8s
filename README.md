@@ -49,6 +49,7 @@
        - [De manera declarativa](#De-manera-declarativa)
        - [Desde un fichero](#Desde-un-fichero)
        - [Uso de StringData](#uso-de-stringdata)
+       - [Volúmenes](#volúmenes)
 
 ### Pod
 ## Crear Pod
@@ -1020,3 +1021,48 @@ Se setean en la variable ```$datos```, la información que se gardó en el secre
 
 ### Uso de StringData:
 ![Secrets](images/secrets.png)
+
+### Volúmenes
+
+Teniendo el secreto:
+```bash
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-01
+type: Opaque
+stringData:
+  usr: 'admin'
+  pass: 'Password1'
+  url: '127.0.0.1'
+  port: '80'
+```
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: busybox-deploy
+  template:
+    metadata:
+      labels:
+        app: busybox-deploy
+    spec:
+      containers:
+        - name: pod1
+          image: busybox
+          command: ["/bin/sh", "-c", "sleep 3600"]
+          volumeMounts:
+            - name: volumen-secretos
+              mountPath: /etc/secret
+              readOnly: true
+      volumes:
+        - name: volumen-secretos
+          secret:
+            secretName: secret-01
+```
+Dentro de los Pods, se tendrá la información en la ruta ```/etc/secret```
