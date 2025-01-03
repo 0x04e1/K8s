@@ -1,7 +1,7 @@
 ### Prueba de concepto de insertar un contenedor sobre un Pod existen
 ![Descripción de la imagen](https://raw.githubusercontent.com/0x04e1/K8s/refs/heads/main/images/PoC1.png)
 
-### Creación del Deploy de MariaDB
+### Creación del *Deploy* de MariaDB:
 
 ```yaml
 apiVersion: apps/v1
@@ -34,7 +34,7 @@ spec:
           value: "P@ssw0rd!"
 ```
 
-### Creación del Deploy de WordPress
+### Creación del *Deploy* de WordPress:
 
 ```yaml
 apiVersion: apps/v1
@@ -68,7 +68,7 @@ spec:
 ```
 ⚠️ El valor de la variable *WORDPRESS_DB_HOST* hará referencia al registro del *ClusterIP* para alcanzar al Pod de MariaDB.
 
-### Creación del ClusterIP de MariaDB
+### Creación del *ClusterIP* de MariaDB:
 
 ```yaml
 apiVersion: v1
@@ -85,7 +85,7 @@ spec:
       targetPort: 3306
 ```
 
-### Creación del ClusterIP de WordPress
+### Creación del ClusterIP de WordPress:
 
 ```yaml
 apiVersion: v1
@@ -101,7 +101,7 @@ spec:
       port: 80
       targetPort: 80
 ```
-### Creación del Ingress
+### Creación del *Ingress* contea el *ClusterIP* de WordPress
 
 ```yaml
 apiVersion: networking.k8s.io/v1
