@@ -51,8 +51,8 @@
        - [Uso de StringData](#uso-de-stringdata)
        - [Volúmenes](#volúmenes)
     -  [Ingress](#Ingress)
-       - [Ingress por subdominio](#Ingres-por-subdominio)
-       - [Ingress por ruta](#Ingres-por-ruta)
+       - [Ingress por subdominio](#ingress-por-subdominio)
+       - [Ingress por ruta](#ingress-por-ruta)
        
 ### Pod
 ## Crear Pod
@@ -1088,3 +1088,5 @@ A través de un Ingress, se publicará el servicio al exterior.
 ### Ingress por ruta
 
 ![Ingress](images/ingress3.png)
+
+⚠️ La solicitudes llegarán en este caso a FQDN wwwdominio.local, el cuál según la ruta destino, será redireccionada al *ClusterIp* de cada servicio.
