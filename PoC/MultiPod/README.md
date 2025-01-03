@@ -25,12 +25,99 @@ spec:
         - containerPort: 3306
         env:
         - name: MARIADB_ROOT_PASSWORD
-          value: "rootpass"
+          value: "CGs66L4@<56#!"
         - name: MARIADB_DATABASE
-          value: "exampledb"
+          value: "wordpress-db"
         - name: MARIADB_USER
-          value: "exampleuser"
+          value: "user01-db"
         - name: MARIADB_PASSWORD
-          value: "examplepass"
+          value: "P@ssw0rd!"
+```
 
+### Creación del Deploy de WordPress
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - name: wordpress
+        image: wordpress:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: "mariadb-cluster-ip-service"
+        - name: WORDPRESS_DB_USER
+          value: "user01-db"
+        - name: WORDPRESS_DB_PASSWORD
+          value: "P@ssw0rd!"
+        - name: WORDPRESS_DB_NAME
+          value: "wordpress-db"
+```
+⚠️ El valor de la variable *WORDPRESS_DB_HOST* hará referencia al registro del *ClusterIP* para alcanzar al Pod de MariaDB.
+
+### Creación del ClusterIP de MariaDB
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb-cluster-ip-service
+spec:
+  type: ClusterIP
+  selector:
+    app: mariadb
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+```
+
+### Creación del ClusterIP de WordPress
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-cluster-ip-service
+spec:
+  type: ClusterIP
+  selector:
+    app: wordpress 
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+```
+### Creación del Ingress
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wordpress-ingress
+spec:
+  rules:
+  - host: wordpress.local.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: wordpress-cluster-ip-service
+            port:
+              number: 80
 ```
