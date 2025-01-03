@@ -1068,3 +1068,5 @@ spec:
 Dentro de los Pods, se tendrá la información en la ruta ```/etc/secret```
 
 ### Ingress
+![Ingress](images/ingress1.png)
+![Ingress](images/ingress2.png)
