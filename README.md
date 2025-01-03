@@ -50,7 +50,7 @@
        - [Desde un fichero](#Desde-un-fichero)
        - [Uso de StringData](#uso-de-stringdata)
        - [Volúmenes](#volúmenes)
-
+    -  [Ingress](#Ingress)
 ### Pod
 ## Crear Pod
 ```bash
@@ -1066,3 +1066,5 @@ spec:
             secretName: secret-01
 ```
 Dentro de los Pods, se tendrá la información en la ruta ```/etc/secret```
+
+### Ingress
