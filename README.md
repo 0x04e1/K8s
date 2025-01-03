@@ -45,14 +45,14 @@
        - [MariaDB](#MariaDB)
        - [Volumen](#Volumen)
   -  [Secrets](#Secrets)
-    - [De manera interactiva](#De-manera-interactiva)
-    - [De manera declarativa](#De-manera-declarativa)
-    - [Desde un fichero](#Desde-un-fichero)
-    - [Uso de StringData](#uso-de-stringdata)
-    - [Volúmenes](#volúmenes)
+     - [De manera interactiva](#De-manera-interactiva)
+     - [De manera declarativa](#De-manera-declarativa)
+     - [Desde un fichero](#Desde-un-fichero)
+     - [Uso de StringData](#uso-de-stringdata)
+     - [Volúmenes](#volúmenes)
    -  [Ingress](#Ingress)
-    - [Ingress por subdominio](#ingress-por-subdominio)
-    - [Ingress por ruta](#ingress-por-ruta)
+     - [Ingress por subdominio](#ingress-por-subdominio)
+     - [Ingress por ruta](#ingress-por-ruta)
        
 ### Pod
 ## Crear Pod
