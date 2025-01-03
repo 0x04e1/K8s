@@ -51,6 +51,9 @@
        - [Uso de StringData](#uso-de-stringdata)
        - [Volúmenes](#volúmenes)
     -  [Ingress](#Ingress)
+       - [Ingress por subdominio](#Ingres-por-subdominio)
+       - [Ingress por ruta](#Ingres-por-ruta)
+       
 ### Pod
 ## Crear Pod
 ```bash
@@ -1070,6 +1073,8 @@ Dentro de los Pods, se tendrá la información en la ruta ```/etc/secret```
 ### Ingress
 
 El concepto *Ingress* permite asignar tráfico a diferentes backends según las reglas que defina a través de la API de Kubernetes.
+
+### Ingress por subdominio
 En este ejemplo se crearán dos *Deployments* con sus respectivos servicios tipo *ClusterIP*:
 
 ![Ingress](images/ingress1.png)
@@ -1079,3 +1084,7 @@ A través de un Ingress, se publicará el servicio al exterior.
 ![Ingress](images/ingress2.png)
 
 ⚠️ La solicitudes llegarán en este caso a FQDN: v1.dominio.local y v1.dominio.local, las cuales serán reenviadas a cada servicio dependiente del *host* destino.
+
+### Ingress por ruta
+
+![Ingress](images/ingress3.png)
