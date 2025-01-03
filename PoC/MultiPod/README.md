@@ -1,2 +1,3 @@
 ### Prueba de concepto de insertar un contenedor sobre un Pod existen
-![PoC](images/PoC1.png)
+![Descripción de la imagen](https://ejemplo.com/ruta/a/tu-imagen.png)
+
