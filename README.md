@@ -1077,4 +1077,5 @@ En este ejemplo se crearán dos *Deployments* con sus respectivos servicios tipo
 A través de un Ingress, se publicará el servicio al exterior.
 
 ![Ingress](images/ingress2.png)
+
 ⚠️ La solicitudes llegarán en este caso a FQDN: v1.dominio.local y v1.dominio.local, las cuales serán reenviadas a cada servicio dependiente del *host* destino.
