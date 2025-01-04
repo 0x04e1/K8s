@@ -124,3 +124,7 @@ spec:
 Al adicionar otro Pod, y al compartir el mismo *network namespace*, es posible que desde el nuevo Pod, podamos leer la información que pasa por el Pod original en este caso.
 
 ![Descripción de la imagen](https://raw.githubusercontent.com/0x04e1/K8s/refs/heads/main/images/PoC2.png)
+
+Como posible resultado:
+
+![Descripción de la imagen](https://raw.githubusercontent.com/0x04e1/K8s/refs/heads/main/images/PoC3.png)
