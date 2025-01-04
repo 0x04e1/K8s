@@ -123,6 +123,39 @@ spec:
               number: 80
 ```
 Al adicionar otro Pod, y al compartir el mismo *network namespace*, es posible que desde el nuevo Pod, podamos leer la información que pasa por el Pod original en este caso.
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - name: wordpress
+        image: wordpress:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: "mariadb-cluster-ip-service"
+        - name: WORDPRESS_DB_USER
+          value: "user01-db"
+        - name: WORDPRESS_DB_PASSWORD
+          value: "P@ssw0rd!"
+        - name: WORDPRESS_DB_NAME
+          value: "wordpress-db"
+      - name: debian
+        image: debian
+        command: ["sleep", "inf"]
+```
 
 ![Descripción de la imagen](https://raw.githubusercontent.com/0x04e1/K8s/refs/heads/main/images/PoC2.png)
 
