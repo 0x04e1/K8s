@@ -1,4 +1,5 @@
-### Prueba de concepto de insertar un contenedor sobre un Pod existen
+## Acceso a *namespace network* del Pod.
+
 ![Descripción de la imagen](https://raw.githubusercontent.com/0x04e1/K8s/refs/heads/main/images/PoC1.png)
 
 ### Creación del *Deploy* de MariaDB:
